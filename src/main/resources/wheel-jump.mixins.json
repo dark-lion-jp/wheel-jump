@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.dark_lion_jp.wheel_jump.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+	],
+	"client": [
+		"MouseMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
