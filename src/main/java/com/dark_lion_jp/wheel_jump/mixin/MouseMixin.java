@@ -12,30 +12,34 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Mouse.class)
 public class MouseMixin {
 
-  // Inject into the onMouseScroll method at the beginning (HEAD), allowing cancellation.
-  @Inject(method = "onMouseScroll", at = @At("HEAD"), cancellable = true)
+  // Inject at the beginning of the onMouseScroll method to override its behavior.
+  @Inject(method = "onMouseScroll", at = @At("HEAD"))
   private void onMouseScroll(long window, double horizontal, double vertical, CallbackInfo callbackInfo) {
+    if (vertical == 0) {
+      return;
+    }
+
     MinecraftClient client = MinecraftClient.getInstance();
+    if (client == null || client.player == null) {
+      return;
+    }
 
-    // Only handle vertical scroll input
-    if (vertical != 0) {
-      PlayerInventory inventory = client.player.getInventory();
-      int currentSlot = inventory.getSelectedSlot();
+    PlayerInventory inventory = client.player.getInventory();
+    if (inventory == null) {
+      return;
+    }
 
-      // Determine scroll direction: +1 for down, -1 for up
-      int delta = (int) Math.signum(vertical);
+    int currentSlot = inventory.getSelectedSlot();
 
-      // Update selected hotbar slot with wrapping (0–8)
-      inventory.setSelectedSlot(((currentSlot + delta) % 9 + 9) % 9);
+    // Determine scroll direction: +1 for down, -1 for up
+    int delta = (int) Math.signum(vertical);
 
-      // Trigger jump if in-game (no screen open) and the player is on the ground
-      if (
-        client.currentScreen == null &&
-        client.player != null &&
-        client.player.isOnGround()
-      ) {
-        client.player.jump();
-      }
+    // Update selected hotbar slot with wrapping (0–8)
+    inventory.setSelectedSlot(((currentSlot + delta) % 9 + 9) % 9);
+
+    // Jump if the player is on the ground and no GUI screen is open
+    if (client.player.isOnGround() && client.currentScreen == null) {
+      client.player.jump();
     }
   }
 }
