@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "wheel-jump",
+	"version": "${version}",
+	"name": "Wheel Jump",
+	"description": "makes both mouse wheel up and down trigger jump",
+	"authors": [
+		"dark-lion-jp"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/wheel-jump",
+		"sources": "https://github.com/dark-lion-jp/wheel-jump"
+	},
+	"license": "MIT",
+	"icon": "assets/wheel-jump/icon.png",
+	"environment": "*",
+	"entrypoints": {
+	},
+	"mixins": [
+		"wheel-jump.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
