@@ -9,7 +9,7 @@
 
 Wheel up or wheel down to jump.
 
-Also cancels the default hotbar scrolling behavior.
+Also disables the default hotbar scrolling behavior.
 
 ## Dependencies
 
