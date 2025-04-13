@@ -9,9 +9,7 @@
 
 Wheel up or wheel down to jump.
 
-Also cancels the default hotbar scrolling behavior.
-
-<img src="https://raw.githubusercontent.com/dark-lion-jp/wheel-jump/refs/heads/main/src/main/resources/assets/wheel-jump/icon.png" alt="The project icon" width="96" style="max-width: 100%" />
+Also disables the default hotbar scrolling behavior.
 
 ## Dependencies
 
