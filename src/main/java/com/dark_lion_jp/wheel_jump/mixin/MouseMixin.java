@@ -20,7 +20,11 @@ public class MouseMixin {
     }
 
     MinecraftClient client = MinecraftClient.getInstance();
-    if (client == null || client.player == null) {
+    if (
+        client == null ||
+        client.player == null ||
+        client.currentScreen != null
+    ) {
       return;
     }
 
@@ -38,7 +42,7 @@ public class MouseMixin {
     inventory.setSelectedSlot(((currentSlot + delta) % 9 + 9) % 9);
 
     // Jump if the player is on the ground and no GUI screen is open
-    if (client.player.isOnGround() && client.currentScreen == null) {
+    if (client.player.isOnGround()) {
       client.player.jump();
     }
   }
