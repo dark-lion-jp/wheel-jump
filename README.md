@@ -1,5 +1,5 @@
 <div style="display: inline">
-  <img src="https://img.shields.io/badge/Minecraft-25w37a-white">
+  <img src="https://img.shields.io/badge/Minecraft-1.21.9-white">
   <img src="https://img.shields.io/badge/Fabric_Loader-0.17.2-white">
   <img src="https://img.shields.io/github/actions/workflow/status/dark-lion-jp/wheel-jump/build.yml?branch=main">
 </div>
